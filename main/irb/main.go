@@ -17,7 +17,11 @@ func main() {
 	defer vm.Exit()
 
 	for {
-		result, err := vm.Run(readInput())
+		txt := readInput()
+		if txt == "quit\n" {
+			break
+		}
+		result, err := vm.Run(txt)
 		if err != nil {
 			fmt.Printf(" => %s", err.Error())
 			continue
